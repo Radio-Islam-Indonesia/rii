@@ -1,14 +1,24 @@
 export const appConfig = {
-  title: "Al Faidah",
-  alias: "Al Faidah",
-  description: "Baca Artikel Islami, Dengarkan Radio dan Audio Kajian Islam",
+  title: "Radio Islam",
+  alias: "Radio Islam Indonesia",
+  description:
+    "Radionya Muslimin se-Nusantara telah hadir untuk Android dan Web.",
   metaDescription:
-    "Baca Artikel Islami, Dengarkan Radio dan Audio Kajian Islam",
+    "Radionya Muslimin se-Nusantara telah hadir untuk Android dan Web.",
   subdescription:
     "Menebar dakwah Islam yang rahmatan 'lil 'alamin sesuai dengan pemahaman dan jalan para salaf",
   backgroundUrl:
-    "https://fmpdtfhmuqxfzmaxxsge.supabase.co/storage/v1/object/public/al-faidah/edouard-tamba-Q8gsXy6C2g0-unsplash%20(1).jpg",
-  url: "https://al-faidah.com",
-  theme: "cupcake",
-  actionButton: null,
+    "https://fmpdtfhmuqxfzmaxxsge.supabase.co/storage/v1/object/public/al-faidah/bg-rii-1.jpg",
+  url: "https://radioislam.or.id",
+  theme: "rii",
+  actionButton: (
+    <a href="https://play.google.com/store/apps/details?id=dev.oasemedia.radioislamindonesia&pli=1">
+      <img
+        alt="Get it on Google Play"
+        src="https://fmpdtfhmuqxfzmaxxsge.supabase.co/storage/v1/object/public/al-faidah/google-play-badge-1.png"
+        width={160}
+        height={60}
+      />
+    </a>
+  ),
 };
