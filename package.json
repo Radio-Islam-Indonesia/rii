@@ -4,7 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "start": "netlify serve",
+    "start": "remix-serve build",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -39,16 +39,15 @@
     "universal-cookie": "^4.0.4",
     "uuid": "^9.0.0",
     "wpapi": "^1.2.2",
-    "@netlify/functions": "^1.4.0",
-    "@netlify/remix-adapter": "^1.0.0",
+    "cross-env": "^7.0.3",
+    "source-map-support": "^0.5.21",
     "@remix-run/css-bundle": "^1.19.3",
     "@remix-run/node": "^1.19.3",
     "@remix-run/react": "^1.19.3",
-    "cross-env": "^7.0.3",
+    "@remix-run/serve": "^1.19.3",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "source-map-support": "^0.5.21"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -60,12 +59,12 @@
     "@types/uuid": "^9.0.2",
     "@types/wpapi": "^1.1.1",
     "tailwindcss": "^3.3.2",
+    "@remix-run/serve": "^1.19.3",
+    "@types/source-map-support": "^0.5.6",
     "@remix-run/dev": "^1.19.3",
     "@remix-run/eslint-config": "^1.19.3",
-    "@remix-run/serve": "^1.19.3",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
-    "@types/source-map-support": "^0.5.6",
     "eslint": "^8.38.0",
     "typescript": "^5.0.4"
   },
