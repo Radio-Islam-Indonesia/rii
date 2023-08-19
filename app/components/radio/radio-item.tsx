@@ -92,7 +92,7 @@ export function RadioItem({
   );
 
   const trackNode = (
-    <p className={`line-clamp-2 text-md text-base-content`}>
+    <p className={`line-clamp-2 text-md text-base-content min-h-12`}>
       {item.trackTitle}
     </p>
   );
