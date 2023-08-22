@@ -90,7 +90,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (navigation.location) {
+    if (env.GA_ID && navigation.location) {
       ReactGA.send({
         hitType: "pageview",
         page: navigation.location?.pathname + navigation.location?.search,
@@ -119,6 +119,11 @@ export default function App() {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="preconnect"
+          href="https://fmpdtfhmuqxfzmaxxsge.supabase.co"
+        />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <meta charSet="utf-8" />
         <meta
           name="viewport"

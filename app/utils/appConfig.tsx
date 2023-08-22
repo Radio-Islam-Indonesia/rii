@@ -8,7 +8,7 @@ export const appConfig = {
   subdescription:
     "Menebar dakwah Islam yang rahmatan 'lil 'alamin sesuai dengan pemahaman dan jalan para salaf",
   backgroundUrl:
-    "https://fmpdtfhmuqxfzmaxxsge.supabase.co/storage/v1/object/public/al-faidah/bg-rii-1.jpg",
+    'url("https://fmpdtfhmuqxfzmaxxsge.supabase.co/storage/v1/object/public/al-faidah/bg-rii-1.jpg")',
   url: "https://radioislam.or.id",
   theme: "rii",
   actionButton: (
