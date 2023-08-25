@@ -11,6 +11,7 @@ export const appConfig = {
     'url("https://fmpdtfhmuqxfzmaxxsge.supabase.co/storage/v1/object/public/al-faidah/bg-rii-1.jpg")',
   url: "https://radioislam.or.id",
   theme: "rii",
+  themeDark: "rii-dark",
   actionButton: (
     <a href="https://play.google.com/store/apps/details?id=dev.oasemedia.radioislamindonesia&pli=1">
       <img
