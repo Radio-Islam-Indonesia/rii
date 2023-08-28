@@ -39,8 +39,9 @@ export async function loader({ request }: LoaderArgs) {
   const { data: publishers } = await supabase
     .from("publishers")
     .select("*")
-    .eq("type", "wordpress")
-    .neq("id", 7);
+    .eq("type_id", 1)
+    .eq("status_id", 1)
+    .neq("id", 7); // forbidden id
 
   const client = new MeiliSearch({
     host: process.env.MEILI_ENDPOINT!,
@@ -64,7 +65,7 @@ export async function loader({ request }: LoaderArgs) {
       const wp = new WPAPI({ endpoint: `${endpoint}/wp-json` });
 
       const termMap: Record<string, Term> = {};
-      const contents: ArticleType[] = [];
+      const contents: Omit<ArticleType, "publishers">[] = [];
 
       const { data: last } = await supabase
         .from("contents")
@@ -90,16 +91,20 @@ export async function loader({ request }: LoaderArgs) {
           .then((data) => {
             for (const item of data) {
               const readStats = readingTime(item.content.rendered);
-              const content: ArticleType = {
-                id: item.slug,
+              let summary = striptags(item.excerpt.rendered);
+              if (publisher.id == 14 && summary.length === 6) {
+                summary = "";
+              }
+              const itemId = `${publisher_id}-${item.id}`;
+              const content: Omit<ArticleType, "publishers"> = {
+                id: itemId,
                 created_at: item.date,
                 updated_at: item.modified,
-                original_id: item.id,
                 link: item.link,
                 slug: item.slug,
                 title: item.title.rendered,
                 description: item.content.rendered,
-                summary: item.excerpt.rendered,
+                summary: summary,
                 status: item.status,
                 read_stats: {
                   minutes: readStats.minutes,
@@ -115,7 +120,6 @@ export async function loader({ request }: LoaderArgs) {
                 author: null,
                 metadata: null,
                 recommended: 0,
-                publishers: {} as any,
               };
 
               const metadata: Record<string, string> = {};
@@ -222,15 +226,29 @@ export async function loader({ request }: LoaderArgs) {
 
                 for (let i = 0; i < contents.length; i++) {
                   const item = contents[i];
-                  const { metadata, ...rest } = item;
+                  const { metadata } = item;
                   const description = metadata?.answer
                     ? `${item.description} ${metadata.answer}`
                     : item.description;
 
                   const content: Record<any, any> = {
-                    ...rest,
-                    id: `${publisher.slug}-${item.slug}`,
-                    summary: striptags(item.summary),
+                    id: item.id,
+                    title: item.title,
+                    slug: item.slug,
+                    image: item.image,
+                    created_at: item.created_at,
+                    link: item.link,
+                    read_stats: item.read_stats,
+                    terms: item.terms,
+                    publishers: {
+                      title: publisher.title,
+                      slug: publisher.slug,
+                      logo_url: publisher.logo_url,
+                      web_url: publisher.web_url,
+                      status: publisher.status,
+                    },
+                    author: item.author,
+                    summary: item.summary,
                     description: striptags(description),
                   };
 
