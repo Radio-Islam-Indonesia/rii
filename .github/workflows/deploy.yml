@@ -30,6 +30,8 @@ jobs:
           files: |
             build/
             public/
+            package.json
+            package-lock.json
             captain-definition
             Dockerfile
           outPath: deploy.tar
