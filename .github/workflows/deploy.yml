@@ -15,23 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+
       - uses: a7ul/tar-action@v1.1.0
         with:
           command: c
           cwd: "./"
           files: |
-            app/
+            build/
             public/
-            .eslintrc.js
-            .gitignore
             captain-definition
             Dockerfile
-            package.json
-            package-lock.json
-            remix.config.js
-            remix.env.d.ts
-            tailwind.config.ts
-            tsconfig.json
           outPath: deploy.tar
 
       - name: Deploy App to CapRover
