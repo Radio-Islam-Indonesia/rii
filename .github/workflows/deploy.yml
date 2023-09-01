@@ -30,7 +30,7 @@ jobs:
             package-lock.json
             remix.config.js
             remix.env.d.ts
-            taildinw.config.ts
+            tailwind.config.ts
             tsconfig.json
           outPath: deploy.tar
 
