@@ -30,6 +30,7 @@ jobs:
             app/
             build/
             public/
+            captain-definition
           outPath: deploy.tar
 
       - name: Deploy App to CapRover
