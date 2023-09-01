@@ -27,6 +27,7 @@ jobs:
           command: c
           cwd: "./"
           files: |
+            app/
             build/
             public/
           outPath: deploy.tar
